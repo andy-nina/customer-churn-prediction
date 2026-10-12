@@ -1,0 +1,20 @@
+import pandas as pd
+df = pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn.csv")
+print("=== Primeras filas ===")
+print(df.head())
+print("\n=== Forma del dataset ===")
+print(df.shape)
+print("\n=== Nombres de columnas ===")
+print(df.columns.tolist())
+print("\n=== Tipos de datos ===")
+print(df.dtypes)
+print("\n=== Valores nulos ===")
+print(df.isnull().sum())
+print("\n=== Valores únicos raros en TotalCharges ===")
+print(df[df["TotalCharges"] == " "])
+# Reemplazamos espacios en blanco por "0" y convertimos la columna a número decimal
+df["TotalCharges"] = df["TotalCharges"].replace(" ", "0")
+df["TotalCharges"] = df["TotalCharges"].astype(float)
+
+print("\n=== Verificación: tipo de dato después de limpiar ===")
+print(df["TotalCharges"].dtype)
